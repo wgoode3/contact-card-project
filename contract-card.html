@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>contract card</title>
+	<link rel="stylesheet" type="text/css" href="contract-card.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  	<script type="text/javascript">
+  		$(document).ready(function(){
+			console.log("ready");
+		$('form').submit(function(){
+			$('#cards').append("<div class='box'><h3>"+$("#first_name").val()+" "+$("#last_name").val()+"</h3>"+"<p>Click for description.</p>"+"<p style='display:none'>"+$("#description").val()+"</p></div>");
+				$(document).on('click', '.box', function(){
+					$("h3").toggle();
+					$("p").toggle();
+				})
+				// $(document).on('click', '.box', function(){
+				// 	$("h3").show();
+				// 	$("p").text('Click for description.');
+				// })
+    		return false; 
+  		});
+    	});
+  	</script>
+</head>
+<body>
+	<form id="form1" action="process.php" method="post">
+		First Name:<input type="text" name="first_name" class="text1" id="first_name" required><br>
+		Last Name:<input type="text" name="last_name" class="text1" id="last_name" required><br>
+		Description:	
+		<textarea id="description" rows="4" cols="30">
+		</textarea>
+		<input type="submit" value="Add User" id="the_button">
+	</form>
+	<div id="cards">
+	</div>
+</body>
+</html>
